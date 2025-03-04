@@ -1,0 +1,63 @@
+<div class="app-content">
+    <div class="app-content-header">
+        <h1 class="app-content-headerText">Produits</h1>
+        <button class="app-content-headerButton" onclick="toggleForm()">Ajouter un Produit</button>
+    </div>
+
+    <!-- Formulaire d'ajout de produit -->
+    <div class="add-product-form" id="add-product-form" style="display:none;">
+        <h2>Ajouter un Produit</h2>
+        <form id="product-form" onsubmit="return handleSubmit(event)">
+            <div>
+                <label for="product-name">Nom du Produit:</label>
+                <input type="text" id="product-name" name="product-name" required>
+            </div>
+            <div>
+                <label for="category">Catégorie:</label>
+                <select id="category" name="category" required>
+                    <option value="">Sélectionner une catégorie</option>
+                    <option value="meubles">Meubles</option>
+                    <option value="decoration">Décoration</option>
+                    <option value="cuisine">Cuisine</option>
+                    <option value="salle_de_bain">Salle de bain</option>
+                </select>
+            </div>
+            <div>
+                <label for="price">Prix:</label>
+                <input type="number" id="price" name="price" required>
+            </div>
+            <div>
+                <label for="quantity">Quantité:</label>
+                <input type="number" id="quantity" name="quantity" required>
+            </div>
+            <div>
+                <button type="submit">Ajouter le Produit</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Message de confirmation -->
+    <div id="confirmation-message" style="display:none; color: green; margin-top: 10px;">
+        Produit ajouté avec succès !
+    </div>
+</div>
+
+<script>
+    function toggleForm() {
+        const form = document.getElementById('add-product-form');
+        form.style.display = form.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        // Logique pour soumettre le formulaire ici (AJAX ou autre)
+        
+        // Afficher le message de confirmation
+        const message = document.getElementById('confirmation-message');
+        message.style.display = 'block';
+
+        // Réinitialiser le formulaire
+        document.getElementById('product-form').reset();
+        toggleForm(); // Masque le formulaire après soumission
+    }
+</script>

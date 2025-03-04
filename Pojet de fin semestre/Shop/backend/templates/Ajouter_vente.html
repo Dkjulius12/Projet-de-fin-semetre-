@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nouvelle Vente</title>
+</head>
+<body>
+    <h2>Ajouter une Vente</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Valider</button>
+    </form>
+    <a href="{% url 'liste_ventes' %}">Voir les ventes</a>
+</body>
+</html>
